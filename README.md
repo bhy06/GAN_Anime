@@ -1,1 +1,10 @@
 # GAN_Anime
+## Model
+### Results
+1. GAN
+2. DCGAN
+3. W-DCGAN
+4. W-DCGAN_GP
+5. W-ResGAN_GP
+6. CGAN
+7. ACGAN
