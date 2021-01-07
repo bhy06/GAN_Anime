@@ -17,12 +17,47 @@ All anime-faces images are collected and proprecessed by myself. Anime-style ima
 
 # Results
 ## 1. GAN
+
+Training for 100 epochs (.gif) | Generated samples (.jpg) 
+ -------- |-----------
+ images | images 
+ 
 ## 2. DCGAN
+
+Training for 100 epochs (.gif) | Generated samples (.jpg) 
+ -------- |-----------
+ images | images 
+ 
 ## 3. W-DCGAN
+
+Training for 100 epochs (.gif) | Generated samples (.jpg) 
+ -------- |-----------
+ images | images 
+ 
 ## 4. W-DCGAN_GP
+
+Training for 100 epochs (.gif) | Generated samples (.jpg) 
+ -------- |-----------
+ images | images 
+ 
 ## 5. W-ResGAN_GP
+
+Training for 100 epochs (.gif) | Generated samples (.jpg) 
+ -------- |-----------
+ images | images 
+ 
 ## 6. CGAN
+
+Training for 100 epochs (.gif) | Generated samples (.jpg) 
+ -------- |-----------
+ images | images 
+ 
 ## 7. ACGAN
+
+Training for 100 epochs (.gif) | Generated samples (.jpg) 
+ -------- |-----------
+ images | images 
+ 
 
 # Things I've learned
 
