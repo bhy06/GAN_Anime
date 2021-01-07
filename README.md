@@ -20,19 +20,19 @@ All anime-faces images are collected and proprecessed by myself. Anime-style ima
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
- images | images 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/GAN.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/GAN.jpg) 
  
 ## 2. DCGAN
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
- images | images 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/DCGAN.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/DCGAN.jpg) 
  
 ## 3. W-DCGAN
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
- images | images 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/WGAN.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/WGAN.jpg) 
  
 ## 4. W-DCGAN_GP
 
