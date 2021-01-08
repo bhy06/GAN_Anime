@@ -22,8 +22,8 @@ In `train.py` multiple gans are available by initializing `--model`:
 - GAN: use `--model 0` to run `models/gan.py`
 - DCGAN: use `--model 1` to run `models/dcgan.py`
 - W-DCGAN: use `--model 2` to run `models/wdcgan.py`
-- W-DCGAN_GP: use `--model 3` to run `models/wresgan_gp.py`
-- W-ResGAN_GP: use `--model 4` to run `models/dcgan.py`
+- W-DCGAN_GP: use `--model 3` to run `models/wdcgan_gp.py`
+- W-ResGAN_GP: use `--model 4` to run `models/wresgan_gp.py`
 - CGAN: use `--model 5` to run `models/cdcgan.py`
 - ACGAN: use `--model 6` to run `models/acgan_resnet.py`
 
