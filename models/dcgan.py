@@ -11,7 +11,7 @@ class _netG_0(nn.Module):
         
         self.inital = nn.Sequential(
             nn.ConvTranspose2d(self.nz, self.ngf * 8, 4, 1, 0, bias=False), # (ngf*8) x 4 x 4
-            nn.BatchNorm2d(self.ngf * 4),
+            nn.BatchNorm2d(self.ngf * 8),
             nn.LeakyReLU(0.2, inplace=True)
             )
         
@@ -33,7 +33,7 @@ class _netG_0(nn.Module):
         return nn.Sequential(*layers)
         
     def forward(self, input):
-        x = self.inital_1(input)
+        x = self.inital(input)
         x = self.conv_transpose1(x)
         x = self.conv_transpose2(x)
         x = self.conv_transpose3(x)
@@ -74,4 +74,4 @@ class _netD_0(nn.Module):
         x = self.conv4(x)        
         x = self.out(x)
         x = self.sigmoid(x)
-        return x.view(-1, 1)
+        return x.view(-1)

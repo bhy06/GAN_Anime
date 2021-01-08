@@ -71,7 +71,7 @@ class _CnetD_1(nn.Module):
         self.conv2 = self.conv_lrelu(self.ndf, self.ndf * 2) # (ndf*2) x 16 x 16
         self.conv3 = self.conv_lrelu(self.ndf * 2, self.ndf * 4) # (ndf*4) x 8 x 8
         self.conv4 = self.conv_lrelu(self.ndf * 4, self.ndf * 8) # (ndf*8) x 4 x 4
-        self.prob = nn.Conv2d(ndf * 8, 1, 4, 1, 0, bias=False)
+        self.out = nn.Conv2d(ndf * 8, 1, 4, 1, 0, bias=False)
         self.sigmoid = nn.Sigmoid()
 
     def conv_lrelu(self, in_channels, out_channels):
@@ -91,6 +91,6 @@ class _CnetD_1(nn.Module):
         x = self.conv2(x)
         x = self.conv3(x)
         x = self.conv4(x)        
-        prob = self.prob(x)
-        prob = self.sigmoid(prob)
-        return prob.view(-1)
+        x = self.out(x)
+        x = self.sigmoid(x)
+        return x.view(-1)

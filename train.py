@@ -40,6 +40,7 @@ parser.add_argument('--ndf', type=int, default=64)
 parser.add_argument('--niter', type=int, default=100, help='number of epochs to train for')
 parser.add_argument('--lr', type=float, default=0.0001, help='learning rate, default=0.0001')
 parser.add_argument('--beta1', type=float, default=0.5, help='beta1 for adam. default=0.5')
+parser.add_argument('--cuda'  , action='store_true', help='enables cuda')
 parser.add_argument('--ngpu'  , type=int, default=1, help='number of GPUs to use')
 parser.add_argument('--netG', default='', help="path to netG (to continue training)")
 parser.add_argument('--netD', default='', help="path to netD (to continue training)")
@@ -63,7 +64,8 @@ parser.add_argument('--d_labelSmooth', type=float, default=0, help='for D, use s
 #     '--ndf', '64',
 #     '--niter', '100',
 #     '--lr', '0.0001',
-#     '--beta1', '0.0', 
+#     '--beta1', '0.5', 
+#     '--cuda', 
 #     '--ngpu', '1',
 #     '--netG', '',
 #     '--netD', '',
@@ -76,6 +78,7 @@ parser.add_argument('--d_labelSmooth', type=float, default=0, help='for D, use s
 # ]
 # =============================================================================
 
+# cgan class number
 num_classes = 20
 
 opt = parser.parse_args()
@@ -127,7 +130,7 @@ elif opt.model == 3:
     netD = wdcgan_gp._netD_0(ngpu, nz, nc, ndf)
 elif opt.model == 4:
     netG = wresgan_gp.GoodGenerator(64, 64*64*3)
-    netD = wresgan_gp.GoodDiscriminator(64, num_classes)
+    netD = wresgan_gp.GoodDiscriminator(64)
 elif opt.model == 5:
     netG = cdcgan._CnetG_1(ngpu, nz, nc, ngf, num_classes)
     netD = cdcgan._CnetD_1(ngpu, nz, nc, ndf, num_classes)
@@ -152,7 +155,11 @@ criterion_CE = nn.CrossEntropyLoss()
 input = torch.FloatTensor(opt.batchSize, nc, opt.imageSize, opt.imageSize)
 noise = torch.FloatTensor(opt.batchSize, nz, 1, 1)
 
-fixed_noise = torch.FloatTensor(opt.batchSize, nz, 1, 1).normal_(0, 1)
+# initialize fixed noise with different shapes for different models
+if opt.model == 4:
+    fixed_noise = torch.FloatTensor(opt.batchSize, nz).normal_(0, 1)
+else:
+    fixed_noise = torch.FloatTensor(opt.batchSize, nz, 1, 1).normal_(0, 1)
 
 fixed_label = torch.randint(0, num_classes - 1, (opt.batchSize,))
 fixed_label_onehot = torch.eye(num_classes)[fixed_label]
@@ -167,25 +174,23 @@ label = torch.FloatTensor(opt.batchSize)
 real_label = 1
 fake_label = 0
 
-one = torch.tensor(1, dtype=torch.float)
-mone = one * -1
-
 if opt.cuda:
     netD.cuda()
     netG.cuda()
     criterion.cuda()
     criterion_MSE.cuda()
+    criterion_CE.cuda()
     input, label = input.cuda(), label.cuda()
     noise, fixed_noise = noise.cuda(), fixed_noise.cuda()
-    one, mone = one.cuda(), mone.cuda()
     fixed_label_onehot = fixed_label_onehot.cuda()
     
 input = Variable(input)
 label = Variable(label)
 noise = Variable(noise)
 fixed_noise = Variable(fixed_noise)
+fixed_label_onehot = Variable(fixed_label_onehot)
 
-# metric output
+# metrics output
 metric = []
 
 # setup optimizer
@@ -207,7 +212,10 @@ def calc_gradient_penalty(netD, real_data, fake_data):
     interpolates = interpolates.cuda()
     interpolates = autograd.Variable(interpolates, requires_grad=True)
     
-    disc_interpolates, _ = netD(interpolates)
+    if opt.model == 6:
+        disc_interpolates, _ = netD(interpolates)
+    else:
+        disc_interpolates = netD(interpolates)
 
     gradients = autograd.grad(outputs=disc_interpolates, inputs=interpolates,
                               grad_outputs=torch.ones(disc_interpolates.size()).cuda(),
@@ -248,9 +256,9 @@ for epoch in range(opt.niter):
             ###########################
             # train with real
             netD.zero_grad()
-            real_cpu, _ = data
-            batch_size = real_cpu.size(0)
-            input.resize_(real_cpu.size()).copy_(real_cpu)
+            real_data, _ = data
+            batch_size = real_data.size(0)
+            input.resize_(real_data.size()).copy_(real_data)
             label.resize_(batch_size).fill_(real_label - opt.d_labelSmooth) # use smooth label for discriminator
 
             output = netD(input)
@@ -291,9 +299,9 @@ for epoch in range(opt.niter):
             for _ in range(opt.Diters):
                 
                 netD.zero_grad()
-                real_cpu, _ = data
-                batch_size = real_cpu.size(0)
-                input.resize_(real_cpu.size()).copy_(real_cpu)
+                real_data, _ = data
+                batch_size = real_data.size(0)
+                input.resize_(real_data.size()).copy_(real_data)
                
                 output_real = netD(input)
                 D_x = output_real.data.mean()
@@ -339,9 +347,9 @@ for epoch in range(opt.niter):
             for _ in range(opt.Diters):
                 
                 netD.zero_grad()
-                real_cpu, _ = data
-                batch_size = real_cpu.size(0)
-                input.resize_(real_cpu.size()).copy_(real_cpu)
+                real_data, _ = data
+                batch_size = real_data.size(0)
+                input.resize_(real_data.size()).copy_(real_data)
                
                 output_real = netD(input)
                 D_x = output_real.data.mean()
@@ -376,6 +384,52 @@ for epoch in range(opt.niter):
         
             end_iter = time.time()
           
+        # WResGAN-GP:
+        elif opt.model == 4: 
+            start_iter = time.time()
+            ############################
+            # (1) Update D network: maximize -D(x) + D(G(z))
+            ###########################
+            for _ in range(opt.Diters):
+                    
+                netD.zero_grad()
+                real_data, _ = data
+                batch_size = real_data.size(0)
+                input.resize_(real_data.size()).copy_(real_data)
+                   
+                output_real = netD(input)
+                D_x = output_real.data.mean()
+    
+                noise.resize_(batch_size, nz)
+                noise.data.normal_(0, 1)               
+                fake = netG(noise)
+                output_fake = netD(fake.detach()) # add ".detach()" to avoid backprop through G
+                D_G_z1 = output_fake.data.mean()
+                    
+                gradient_penalty = calc_gradient_penalty(netD, input.data, fake.data)
+                    
+                errD = -torch.mean(output_real) + torch.mean(output_fake) + gradient_penalty
+                    
+                wasserstein_D = torch.mean(output_real) - torch.mean(output_fake)
+                    
+                errD.backward()
+                optimizerD.step()
+                        
+            ############################
+            # (2) Update G network: maximize -D(G(z))
+            ###########################
+            netG.zero_grad()
+            noise.resize_(batch_size, nz)
+            noise.data.normal_(0, 1)
+            fake = netG(noise)
+            output_fake = netD(fake) 
+            errG = -torch.mean(output_fake)
+            errG.backward()
+            D_G_z2 = output_fake.data.mean()
+            optimizerG.step()
+
+            end_iter = time.time()
+            
         # cDCGAN
         elif opt.model == 5:
             start_iter = time.time()
@@ -384,10 +438,10 @@ for epoch in range(opt.niter):
             ###########################
             # train with real
             netD.zero_grad()
-            real_cpu, real_labels = data
-            batch_size = real_cpu.size(0)
+            real_data, real_labels = data
+            batch_size = real_data.size(0)
             
-            input.resize_(real_cpu.size()).copy_(real_cpu)
+            input.resize_(real_data.size()).copy_(real_data)
             label.resize_(batch_size).fill_(real_label - opt.d_labelSmooth) # use smooth label for discriminator
             
             real_labels_input = Variable(fill[real_labels]).cuda()        
@@ -540,6 +594,7 @@ for epoch in range(opt.niter):
     scheduler_D.step()
     scheduler_G.step()
 
+# write metrics
 with open(os.path.join(opt.outDir, 'output_epoch.txt'), 'w') as f:
     for item in metric:
         f.write("%s\n" % item)  
