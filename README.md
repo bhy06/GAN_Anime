@@ -62,13 +62,13 @@ Training for 100 epochs (.gif) | Generated samples (.jpg)
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
- images | images 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/cdcgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/cdcgan.jpg) 
  
 ## 7. ACGAN
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
- images | images 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/acgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/acgan.jpg) 
  
 
 # Things I've learned
