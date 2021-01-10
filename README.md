@@ -32,19 +32,19 @@ In `train.py` multiple gans are available by initializing `--model`:
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
-![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/GAN.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/GAN.jpg) 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/gan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/gan.jpg) 
  
 ## 2. DCGAN
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
-![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/DCGAN.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/DCGAN.jpg) 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/dcgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/dcgan.jpg) 
  
 ## 3. W-DCGAN
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
-![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/WGAN.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/WGAN.jpg) 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/wgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/wgan.jpg) 
  
 ## 4. W-DCGAN_GP
 
