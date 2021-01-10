@@ -44,13 +44,13 @@ Training for 100 epochs (.gif) | Generated samples (.jpg)
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
-![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/wgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/wgan.jpg) 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/wdcgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/wdcgan.jpg) 
  
 ## 4. W-DCGAN_GP
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
- images | images 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/wdcgan_gp.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/wdcgan_gp.jpg) 
  
 ## 5. W-ResGAN_GP
 
