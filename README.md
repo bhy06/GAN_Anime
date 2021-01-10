@@ -56,7 +56,7 @@ Training for 100 epochs (.gif) | Generated samples (.jpg)
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
  -------- |-----------
- images | images 
+![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/wresgan_gp.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/wresgan_gp.jpg) 
  
 ## 6. CGAN
 
