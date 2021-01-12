@@ -6,13 +6,12 @@ This is a PyTorch implementation of GANs, focusing on generating anime faces.
 - [x] Implement GANs
 - [ ] Implement StyleGANs
 - [x] Implement Conditional GANs
-- [ ] Import metric learning (triplet loss) 
  
 # Anime-faces Dataset
-All anime-faces images are collected and proprecessed by myself. Anime-style images of 45 tags are collected from [danbooru.donmai.us](https://danbooru.donmai.us/) using the crawler tool [gallery-dl](https://github.com/mikf/gallery-dl). The images are then processed by a anime face detector [lbpcascade_animeface](https://github.com/nagadomi/lbpcascade_animeface) in `build_animeface_dataset.py`. After cropping, meaningless images are deleted manually and the resulting dataset contains about 100,000 anime faces in total. For conditional GANs, anime-faces images of 20 tags (about 50,000 images) are utilized for training.
+All anime-faces images are collected and proprecessed by myself. Anime-style images of 45 tags (`tags.txt`) are collected from [danbooru.donmai.us](https://danbooru.donmai.us/) using the crawler tool [gallery-dl](https://github.com/mikf/gallery-dl). After deleting unrelated images without anime-faces, the images are then processed by a anime face detector [lbpcascade_animeface](https://github.com/nagadomi/lbpcascade_animeface) in `build_animeface_dataset.py`. After cropping, meaningless images are deleted manually and the resulting dataset contains about 100,000 anime faces in total. For conditional GANs, anime-faces images of 20 tags (`tags_20.txt`) (about 50,000 images) are utilized for training.
 
 # Usage
-To train the model (default=dcgan),
+To train the model (default：dcgan),
 ```
 python train.py --dataRoot path_to_dataset --cuda
 ```
@@ -80,8 +79,22 @@ Training for 100 epochs (.gif) | Generated samples (.jpg)
  
 
 # Things I've learned
+- GAN is really hard to train since it is difficult to balance Discriminator and Generator.
+- DCGAN generally works better than GAN and it can generate clearer images with details.
+- WGAN trains more stably and has the metric to show the convergence during training, also avoids mode collapse problem.
+- WGAN-GP using gradient penalty shows more powerful performance and better generated images than WGAN using weight clipping.
+- CGAN is also hard to train and easily causes mode collapse problem.
+- ACGAN seems more stable and powerful in generating conditional images.
+
+# Tips based on personal experience
+- Add noise to D's inputs and labels helps stablize training.
+- Adam is always good, but exponetially decaying learning rate seems not so helpful and makes no significant differences.
+- Training D several times than G sometimes seems helpful (WGAN) but easily makes D so strong thus upsets the existing balance.
+- Giving D higher learning rate than G seems lead to better results.
+- D should be a little more powerful to lead G to generate better images.
 
 # Acknowledgements
 - [jayleicn/animeGAN](https://github.com/jayleicn/animeGAN)
 - [caogang/wgan-gp](https://github.com/caogang/wgan-gp)
 - [igul222/improved_wgan_training](https://github.com/igul222/improved_wgan_training)
+- [clvrai/ACGAN-PyTorch](https://github.com/clvrai/ACGAN-PyTorch)
