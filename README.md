@@ -81,7 +81,7 @@ Training for 100 epochs (.gif) | Generated samples (.jpg)
  
 
 # Things I've learned
-- GAN is really hard to train since it is difficult to balance Discriminator and Generator.
+- GAN is really hard to train since it is difficult to balance D and G.
 - DCGAN generally works better than GAN and it can generate clearer images with details.
 - WGAN trains more stably and has the metric to show the convergence during training, also avoids mode collapse problem.
 - WGAN-GP using gradient penalty shows more powerful performance and better generated images than WGAN using weight clipping.
