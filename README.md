@@ -31,31 +31,31 @@ In `train.py` multiple gans are available by initializing `--model`:
 # Results
 ## 1. GAN
 
-Training for 100 epochs (.gif) | Generated samples (.jpg) 
+Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg) 
  -------- |-----------
 ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/gan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/gan.jpg) 
  
 ## 2. DCGAN
 
-Training for 100 epochs (.gif) | Generated samples (.jpg) 
+Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg) 
  -------- |-----------
 ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/dcgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/dcgan.jpg) 
  
 ## 3. W-DCGAN
 
-Training for 100 epochs (.gif) | Generated samples (.jpg) 
+Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg) 
  -------- |-----------
 ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/wdcgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/wdcgan.jpg) 
  
 ## 4. W-DCGAN_GP
 
-Training for 100 epochs (.gif) | Generated samples (.jpg) 
+Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg) 
  -------- |-----------
 ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/wdcgan_gp.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/wdcgan_gp.jpg) 
  
 ## 5. W-ResGAN_GP
 
-Training for 100 epochs (.gif) | Generated samples (.jpg) 
+Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg) 
  -------- |-----------
 ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/wresgan_gp.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/wresgan_gp.jpg) 
  
@@ -65,7 +65,7 @@ Generated samples are based on the following category order, where the images of
 
 From top to bottom: green_hair, orange_hair, purple_hair, silver_hair, blue_eyes, green_eyes, pink_eyes, red_eyes
 
-Training for 100 epochs (.gif) | Generated samples (.jpg) 
+Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg) 
  -------- |-----------
 ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/cdcgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/cdcgan.jpg) 
  
@@ -75,7 +75,7 @@ Generated samples are based on the following category order, where the images of
 
 From top to bottom: green_hair, orange_hair, purple_hair, silver_hair, blue_eyes, green_eyes, pink_eyes, red_eyes
 
-Training for 100 epochs (.gif) | Generated samples (.jpg) 
+Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg) 
  -------- |-----------
 ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/acgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/acgan.jpg) 
  
