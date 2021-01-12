@@ -61,6 +61,7 @@ Training for 100 epochs (.gif) | Generated samples (.jpg)
 ## 6. CGAN
 
 Generated samples are based on the following category order, where the images of each category are shown in each row.
+
 From top to bottom: green_hair, orange_hair, purple_hair, silver_hair, blue_eyes, green_eyes, pink_eyes, red_eyes
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
@@ -70,6 +71,7 @@ Training for 100 epochs (.gif) | Generated samples (.jpg)
 ## 7. ACGAN
 
 Generated samples are based on the following category order, where the images of each category are shown in each row.
+
 From top to bottom: green_hair, orange_hair, purple_hair, silver_hair, blue_eyes, green_eyes, pink_eyes, red_eyes
 
 Training for 100 epochs (.gif) | Generated samples (.jpg) 
