@@ -10,6 +10,8 @@ This is a PyTorch implementation of GANs, focusing on generating anime faces.
 # Anime-faces Dataset
 All anime-faces images are collected and proprecessed by myself. Anime-style images of 45 tags (`tags.txt`) are collected from [danbooru.donmai.us](https://danbooru.donmai.us/) using the crawler tool [gallery-dl](https://github.com/mikf/gallery-dl). After deleting unrelated images without anime-faces, the images are then processed by a anime face detector [lbpcascade_animeface](https://github.com/nagadomi/lbpcascade_animeface) in `build_animeface_dataset.py`. After cropping, meaningless images are deleted manually and the resulting dataset contains about 100,000 anime faces in total. For conditional GANs, anime-faces images of 20 tags (`tags_20.txt`) (about 50,000 images) are utilized for training.
 
+Dataset is available [here](https://drive.google.com/file/d/1aHmdEOHii2qDBFjUmHOhClVYmQCPKEJd/view?usp=sharing).
+
 # Usage
 To train the model (default：dcgan),
 ```
@@ -87,6 +89,7 @@ Training for 100 epochs (.gif) | Generated samples (.jpg)
 - ACGAN seems more stable and powerful in generating conditional images.
 
 # Tips based on personal experience
+- The most important thing for training GANs is to learn to balance D and G.
 - Add noise to D's inputs and labels helps stablize training.
 - Adam is always good, but exponetially decaying learning rate seems not so helpful and makes no significant differences.
 - Training D several times than G sometimes seems helpful (WGAN) but easily makes D so strong thus upsets the existing balance.
