@@ -81,7 +81,7 @@ Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg)
  
  ## 8. StyleGAN
  
- Since the .gif file of training iteration is too large (250MB), [training progression (12,000 iterations)](https://drive.google.com/file/d/1lcZHU5Bwip7OdOdmkBtUZ5WXwrUTSmyA/view?usp=sharing) is here.
+ [Training progression (3,000 iterations)](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/videos/stylegan.mp4) is here.
  
  Here are the generated 512x512 samples (.jpg).
  
@@ -92,7 +92,9 @@ Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg)
  
  ## 9. StyleGAN2
  
- Since the .gif file of training iteration is too large (1.1GB), [training progression (3,000 iterations)](https://drive.google.com/file/d/133A6qWqkzYRqct4d27EsjERMUicQ8ZIz/view?usp=sharing) is here.
+ [Training progression (3,000 iterations)](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/videos/stylegan2.mp4) is here.
+ 
+ ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/videos/stylegan.mp4) 
  
  Here are the generated 512x512 samples (.jpg).
  
@@ -112,6 +114,8 @@ Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg)
 - WGAN-GP using gradient penalty shows more powerful performance and better generated images than WGAN using weight clipping.
 - CGAN is also hard to train and easily causes mode collapse problem.
 - ACGAN seems more stable and powerful in generating conditional images.
+- The blobs in training are part of how StyleGAN 'creates' new features and in fact doing something useful.
+- StyleGAN2 changes the AdaIN normalization to eliminate the blobs problem and improve overall quality.
 
 # Tips based on personal experience
 - The most important thing for training GANs is to learn to balance D and G.
@@ -120,9 +124,12 @@ Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg)
 - Training D several times than G sometimes seems helpful (WGAN) but easily makes D so strong thus upsets the existing balance.
 - Giving D higher learning rate than G seems lead to better results.
 - D should be a little more powerful to lead G to generate better images.
+- The learning rate is one of the most critical hyperparameters.
+- One of the more powerful ways to improve performance is data cleaning/augmentation.
 
 # Acknowledgements
 - [jayleicn/animeGAN](https://github.com/jayleicn/animeGAN)
 - [caogang/wgan-gp](https://github.com/caogang/wgan-gp)
 - [igul222/improved_wgan_training](https://github.com/igul222/improved_wgan_training)
 - [clvrai/ACGAN-PyTorch](https://github.com/clvrai/ACGAN-PyTorch)
+- [Making Anime Faces With StyleGAN](https://www.gwern.net/Faces#training)
