@@ -79,6 +79,31 @@ Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg)
  -------- |-----------
 ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/gif/acgan.gif) | ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/acgan.jpg) 
  
+ ## 8. StyleGAN
+ 
+ Since the .gif file of training iteration is too large (250MB), [training progression (12,000 iterations)](https://drive.google.com/file/d/1lcZHU5Bwip7OdOdmkBtUZ5WXwrUTSmyA/view?usp=sharing) is here.
+ 
+ Here are the generated 512x512 samples (.jpg).
+ 
+ ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/stylegan_example1.png) 
+ ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/stylegan_example2.png) 
+ 
+ More generated samples can be found [here](https://drive.google.com/drive/folders/16UxB5PsPPOC5XnimtB-_uEMWPRgiSug9?usp=sharing).
+ 
+ ## 9. StyleGAN2
+ 
+ Since the .gif file of training iteration is too large (1.1GB), [training progression (3,000 iterations)](https://drive.google.com/file/d/133A6qWqkzYRqct4d27EsjERMUicQ8ZIz/view?usp=sharing) is here.
+ 
+ Here are the generated 512x512 samples (.jpg).
+ 
+ ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/stylegan2_example1.png) 
+ ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/stylegan2_example2.png) 
+ 
+ More generated samples can be found [here](https://drive.google.com/drive/folders/13ov69sYObxX1-u_LQx35nDJL1Jdo1nwc?usp=sharing).
+ 
+ Here are the style mixing examples.
+ 
+ ![](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/image/stylegan2_grid.png) 
 
 # Things I've learned
 - GAN is really hard to train since it is difficult to balance D and G.
