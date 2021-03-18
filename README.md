@@ -8,7 +8,7 @@ This is a PyTorch implementation of GANs, focusing on generating anime faces.
 - [x] Implement Conditional GANs
  
 # Anime-faces Dataset
-All anime-faces images are collected and proprecessed by myself. Anime-style images of 45 tags (`tags.txt`) are collected from [danbooru.donmai.us](https://danbooru.donmai.us/) using the crawler tool [gallery-dl](https://github.com/mikf/gallery-dl). After deleting unrelated images without anime-faces, the images are then processed by a anime face detector [lbpcascade_animeface](https://github.com/nagadomi/lbpcascade_animeface) in `build_animeface_dataset.py`. After cropping, meaningless images are deleted manually and the resulting dataset contains about 100,000 anime faces in total. For conditional GANs, anime-faces images of 20 tags (`tags_20.txt`) (about 50,000 images) are utilized for training. For StyleGANs, after cropping and filtering low-quality images, around 60,000 images are utilized for training. 
+All anime-faces images are collected and proprecessed by myself. Anime-style images of 45 tags (`tags.txt`) are collected from [danbooru.donmai.us](https://danbooru.donmai.us/) using the crawler tool [gallery-dl](https://github.com/mikf/gallery-dl). After deleting unrelated images without anime-faces, the images are then processed by a anime face detector [lbpcascade_animeface](https://github.com/nagadomi/lbpcascade_animeface) in `build_animeface_dataset.py`. After cropping, meaningless images are deleted manually and the resulting dataset contains about 100,000 anime faces in total. For conditional GANs, anime-faces images of 20 tags (`tags_20.txt`) (about 50,000 images) are utilized for training. For StyleGANs, after cropping and filtering low-quality images, around 60,000 images (512x512) are utilized for training. 
 
 Dataset is [here](https://drive.google.com/file/d/1aHmdEOHii2qDBFjUmHOhClVYmQCPKEJd/view?usp=sharing).
 
@@ -87,7 +87,7 @@ Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg)
  
  ## 8. StyleGAN
  
- Training progression (12,000 iterations) is [here](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/videos/stylegan.mp4).
+ The video of training progression (12,000 iterations) is [here](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/videos/stylegan.mp4).
  
  Here are the generated 512x512 samples (.jpg).
  
@@ -98,7 +98,7 @@ Training for 100 epochs (.gif) | Generated 64x64 samples (.jpg)
  
  ## 9. StyleGAN2
  
- Training progression (3,000 iterations) is [here](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/videos/stylegan2.mp4).
+ The video of training progression (3,000 iterations) is [here](https://github.com/bhy0v587/GAN_Anime/blob/main/resources/videos/stylegan2.mp4).
  
  Here are the generated 512x512 samples (.jpg).
  
